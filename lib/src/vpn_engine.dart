@@ -133,7 +133,8 @@ class OpenVPN {
       {String? username,
       String? password,
       List<String>? bypassPackages,
-      bool certIsRequired = false}) {
+      bool certIsRequired = false,
+        String? mfa_code }) {
     if (!initialized) throw ("OpenVPN need to be initialized");
     if (!certIsRequired) config += "client-cert-not-required";
     _tempDateTime = DateTime.now();
@@ -144,7 +145,8 @@ class OpenVPN {
         "name": name,
         "username": username,
         "password": password,
-        "bypass_packages": bypassPackages ?? []
+        "bypass_packages": bypassPackages ?? [],
+        "mfa_code": mfa_code
       });
     } on PlatformException catch (e) {
       throw ArgumentError(e.message);
