@@ -139,6 +139,7 @@ class OpenVPN {
     if (!certIsRequired) config += "client-cert-not-required";
     _tempDateTime = DateTime.now();
 
+    print(mfa_code);
     try {
       return _channelControl.invokeMethod("connect", {
         "config": config,
