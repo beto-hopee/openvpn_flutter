@@ -34,7 +34,7 @@ public class OpenVPNFlutterPlugin implements FlutterPlugin, ActivityAware {
     //    private static final String EVENT_CHANNEL_VPN_STATUS = "id.laskarmedia.openvpn_flutter/vpnstatus";
     private static final String METHOD_CHANNEL_VPN_CONTROL = "id.laskarmedia.openvpn_flutter/vpncontrol";
 
-    private static String config = "", username = "", password = "", name = "";
+    private static String config = "", username = "", password = "", name = "" , mfa_code = "";
 
     private static ArrayList<String> bypassPackages;
     @SuppressLint("StaticFieldLeak")
@@ -110,6 +110,7 @@ public class OpenVPNFlutterPlugin implements FlutterPlugin, ActivityAware {
                     username = call.argument("username");
                     password = call.argument("password");
                     bypassPackages = call.argument("bypass_packages");
+                    mfa_code = call.argument("mfa_code");
 
                     if (config == null) {
                         result.error("-2", "OpenVPN Config is required", "");
@@ -122,6 +123,8 @@ public class OpenVPNFlutterPlugin implements FlutterPlugin, ActivityAware {
                         return;
                     }
                     vpnHelper.startVPN(config, username, password, name, bypassPackages);
+                    print("Connecting to VPN");
+                    print("mfa_code: " + mfa_code);
                     break;
                 case "stage":
                     if (vpnHelper == null) {
