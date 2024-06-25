@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
+import 'dart:developer' as developer;
 import 'package:flutter/services.dart';
 import 'model/vpn_status.dart';
 
@@ -171,6 +172,7 @@ class OpenVPN {
   ///Get latest connection stage
   Future<VPNStage> stage() async {
     String? stage = await _channelControl.invokeMethod("stage");
+    developer.log("stage: $stage");
     return _strToStage(stage ?? "disconnected");
   }
 
