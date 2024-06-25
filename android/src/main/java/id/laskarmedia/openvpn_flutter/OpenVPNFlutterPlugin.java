@@ -120,7 +120,6 @@ public class OpenVPNFlutterPlugin implements FlutterPlugin, ActivityAware {
                     final Intent permission = VpnService.prepare(activity);
                     if (permission != null) {
                         activity.startActivityForResult(permission, 24);
-                        activity.
                         return;
                     }
                     vpnHelper.startVPN(config, username, password, name, bypassPackages);
