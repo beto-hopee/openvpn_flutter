@@ -46,5 +46,5 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.beto-hopee:openvpn_library:6a1141b5f3'
+    implementation 'com.github.beto-hopee:openvpn_library:d50019e1df'
 }
