@@ -172,7 +172,6 @@ class OpenVPN {
   ///Get latest connection stage
   Future<VPNStage> stage() async {
     String? stage = await _channelControl.invokeMethod("stage");
-    developer.log("stage: $stage");
     return _strToStage(stage ?? "disconnected");
   }
 
